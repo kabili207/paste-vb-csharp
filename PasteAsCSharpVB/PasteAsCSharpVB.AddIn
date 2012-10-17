@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<Extensibility xmlns="http://schemas.microsoft.com/AutomationExtensibility">
+	<HostApplication>
+		<Name>Microsoft Visual Studio Macros</Name>
+		<Version>10.0</Version>
+	</HostApplication>
+	<HostApplication>
+		<Name>Microsoft Visual Studio</Name>
+		<Version>10.0</Version>
+	</HostApplication>
+	<Addin>
+		<FriendlyName>Paste as C#/VB.NET</FriendlyName>
+		<Description>Allows pasting VB.NET as C# and vice versa</Description>
+		<Assembly>PasteAsCSharpVB.dll</Assembly>
+		<FullClassName>PasteAsCSharpVB.Connect</FullClassName>
+		<LoadBehavior>1</LoadBehavior>
+		<CommandPreload>0</CommandPreload>
+		<CommandLineSafe>0</CommandLineSafe>
+	</Addin>
+</Extensibility>
