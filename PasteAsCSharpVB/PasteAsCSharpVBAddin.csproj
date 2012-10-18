@@ -59,13 +59,6 @@
     <Compile Include="Connect.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ConverterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConverterForm.Designer.cs">
-      <DependentUpon>ConverterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IConvertCode.cs" />
     <Compile Include="NRefactoryConverter.cs" />
   </ItemGroup>
   <ItemGroup>
