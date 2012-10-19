@@ -124,16 +124,26 @@
     </Content>
     <Content Include="lib\ICSharpCode.NRefactory.dll" />
     <Content Include="lib\ICSharpCode.NRefactory.pdb" />
-    <Content Include="PasteAsCSharpVB.AddIn" />
+    <Content Include="PasteAsCSharpVB.AddIn">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Resources\6.bmp" />
+    <None Include="Resources\5.bmp" />
+    <None Include="Resources\4.bmp" />
+    <None Include="Resources\3.bmp" />
+    <None Include="Resources\2.bmp" />
+    <None Include="Resources\1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CommandBar.resx" />
+    <EmbeddedResource Include="Icons.resx" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <IconsResOut>$(ProjectDir)$(IntermediateOutputPath)$(AssemblyName).Icons.resources</IconsResOut>
+    <PreBuildEvent>"$(SDK40ToolsPath)ResGen.exe" "$(ProjectDir)Icons.resx" "$(IconsResOut)" /usesourcepath
+"$(SDK40ToolsPath)al.exe" /embed:"$(IconsResOut)" /culture:en-US /out:"$(ProjectDir)$(OutputPath)$(AssemblyName).resources.dll"</PreBuildEvent>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
@@ -159,5 +169,12 @@
     <Copy Condition="Exists('$(OutputPath)$(DocFileName)')" SourceFiles="$(OutputPath)$(DocFileName)" DestinationFolder="$(DeploymentDirectory)">
       <Output TaskParameter="DestinationFiles" ItemName="FileWrites" />
     </Copy>
+    <Copy Condition="Exists('$(OutputPath)$(AssemblyName).resources.dll')" SourceFiles="$(OutputPath)$(AssemblyName).resources.dll" DestinationFolder="$(DeploymentDirectory)">
+      <Output TaskParameter="DestinationFiles" ItemName="FileWrites" />
+    </Copy>
+  </Target>
+  <Target Name="BeforeClean" Condition="Exists('$(OutputPath)$(AssemblyName).resources.dll')">
+    <Message Text="Cleaning Output Icon Resources" Importance="high" />
+    <Delete Files="$(OutputPath)$(AssemblyName).resources.dll" />
   </Target>
 </Project>
